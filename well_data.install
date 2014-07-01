@@ -23,7 +23,7 @@ function well_data_schema() {
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
-        'default' => -1,
+        'default' => 0,
       ),
       'date' => array(
         'description' => 'Date',
