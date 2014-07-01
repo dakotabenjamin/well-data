@@ -23,10 +23,11 @@ function well_data_schema() {
         'type' => 'int',
         'unsigned' => TRUE,
         'not null' => TRUE,
+        'default' => -1,
       ),
       'date' => array(
         'description' => 'Date',
-        'mysql_type' => 'DATE',
+        'type' => 'DATE',
         'not null' => TRUE,
       ),
       'time' => array(
