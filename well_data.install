@@ -41,7 +41,7 @@ function well_data_schema() {
         'not null' => TRUE,
       ),
       'units' => array(
-        'type' => 'varchar'
+        'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
       ),
