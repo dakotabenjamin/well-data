@@ -1,0 +1,148 @@
+<?php
+
+/**
+  * @file
+  * The well data entity
+  */
+  
+/**
+  * First thing to di is implement hook_entity_info()
+  */
+function well_data_entity_info() {
+  $return['well_data'] = array(
+    'label' => t('Well Datum'),
+    'plural label' => t('Well Data'),
+    'description' => t('WaterMonitor well data entries'),
+    'controller class' => 'WellDataController',
+    'base table' => 'well_data',
+    'fieldable' => FALSE,
+    'entity keys' => array(
+      'id' => 'did',
+    ),
+    'bundles' => array(
+      'well' => array(
+        'label' => 'well_data',
+        'admin' => array(
+          'path' => 'admin/structure/well_data/manage',
+          'access arguments' => array('administer well data'),
+        ),
+      ),
+    ),
+    'view modes' => array(
+      'full' => array(
+        'label' => t('Default'),
+        'custom settings' => FALSE,
+      ),
+    ),
+    'uri callback' => 'entity_class_uri',
+  );
+
+  return $return;
+}
+
+/**
+  * Implements hook_uri()
+  */
+function well_data_uri($welldata){
+  return array(
+    'path' => 'well_data/' . $welldata->id,
+  );
+}
+
+/**
+  * Implements hook_load()
+  * This function and the following loads the well data entity
+  */
+function well_data_load($wid = NULL, $reset = FALSE){
+  $wids = (isset ($wid) ? array($wid) : array());
+  $well = well_load_multiple($wids, $reset);
+  return $well ? reset ($well) : FALSE;
+}
+ 
+function well_data_load_multiple($wids = array(), $conditions = array(), $reset = FALSE){
+  return entity_load('well_data', $wids, $conditions, $reset);
+}
+
+
+/**
+  * Implements hook_menu()
+  *Here are a few ways to view the entities
+  */
+function well_data_menu(){
+  $items['admin/structure/well_data/manage'] = array(
+    'title' => 'Well Data Admin',
+    'description' => 'Manage well data structure',
+    'page callback' => 'well_data_info',
+    'access arguments' => array('administer well data'),
+  );
+  $items['well_data/%well'] = array(
+    'title callback' => 'well_data_page_title',
+    'title arguments' => array(1),
+    'page callback' => 'well_data_page_view',
+    'page arguments' => array(1),
+    'access arguments' => array('view well data'),
+    'type' => MENU_CALLBACK,
+  );
+  //$items['well/add'] = array(
+  //  'title' => 'Add Well',
+  //  'page callback' => 'well_add',
+  //  'access arguments' => array('create well'),
+  //); // Do this when we implement feeds
+  return $items;
+}
+
+/**
+  * Implements hook_permission(). Gives permissions to administer and view wells
+  */
+function well_data_permission(){
+    return array(
+    'administer well data' =>  array(
+      'title' => t('Administer well data'),
+      'restrict access' => TRUE,
+    ),
+    'view well data' => array(
+      'title' => t('View Well Data'),
+    )
+  );
+}
+ 
+/**
+  * Implements hook_info(). provides basic info. 
+  */
+function well_data_info() {
+  return ('Welcome to the administration page for the well data. ');
+}
+ 
+function well_data_page_title($welldata){
+  return $welldata->did;               // >>>>>>>>>>>> RELATIONS <<<<<<<<<<<
+}
+ 
+function well_data_page_view($welldata, $view_mode = 'full'){
+  $welldata->content = array(); // $well->content is an array of each field of content in the well entity
+ 
+  // Build fields content.
+  field_attach_prepare_view('well_data', array($welldata->did => $welldata), $view_mode);
+  entity_prepare_view('well_data', array($welldata->did => $welldata));
+  $welldata->content += field_attach_view('well_data', $welldata, $view_mode);
+ 
+  return $welldata->content;
+}
+ 
+ 
+function well_data_field_extra_fields() {
+  $return = array();
+  $return['welldata']['welldata'] = array(
+    'form' => array(
+      'wellname' => array( // >>>>>>>>>>>>>> RELATION <<<<<<<<<<<<<<<<<<<<
+        'label' => t('wellname'),
+        'description' => t('Well Name'),
+      ),
+    ),
+  );
+ 
+  return $return;
+}
+
+
+
+class WellController extends EntityAPIController {}

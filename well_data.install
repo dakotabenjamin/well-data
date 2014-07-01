@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the well_data entity.
+ */
+
+/**
+  * Implements hook_schema().
+  */
+function well_data_schema() {
+  $schema['well_data'] = array (
+    'description' => 'The main store for well data',
+    'fields' => array(
+      'did' => array(
+        'description' => 'Primary key for our table of well data',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ), 
+      'well' => array(
+        'description' => 'id of the data\'s well',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'date' => array(
+        'description' => 'Date',
+        'mysql_type' => 'DATE',
+        'not null' => TRUE,
+      ),
+      'time' => array(
+        'description' => 'Time',
+        'mysql_type' => 'TIME',
+        'not null' => TRUE,
+      ),
+      'level' => array(
+        'type' => 'numeric',
+        'precision' => 4,
+        'scale' => 2,
+        'not null' => TRUE,
+      ),
+      'units' => array(
+        'type' => 'varchar'
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'calibration' => array(
+        'type' => 'numeric',
+        'precision' => 4,
+        'scale' => 2,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('did'),
+  );
+  return $schema;
+}
