@@ -27,12 +27,14 @@ function well_data_schema() {
       ),
       'date' => array(
         'description' => 'Date',
-        'type' => 'DATE',
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
       ),
       'time' => array(
         'description' => 'Time',
-        'mysql_type' => 'TIME',
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
       ),
       'level' => array(
