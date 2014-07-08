@@ -145,4 +145,6 @@ function well_data_field_extra_fields() {
 
 
 
-class WellDataController extends EntityAPIController {}
+class WellDataController extends EntityAPIController {
+
+}

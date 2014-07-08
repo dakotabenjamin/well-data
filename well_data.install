@@ -39,7 +39,7 @@ function well_data_schema() {
       ),
       'level' => array(
         'type' => 'numeric',
-        'precision' => 4,
+        'precision' => 6,
         'scale' => 2,
         'not null' => TRUE,
       ),
