@@ -39,7 +39,7 @@ function well_data_schema() {
       ),
       'datetime' => array(
         'description' => 'Datetime',
-        'mysql_type' => 'datetime',
+        'mysql_type' => 'DATETIME',
 #        'pgsql_type' => 'timestamp without time zone',
         'not null' => FALSE,
       ),
