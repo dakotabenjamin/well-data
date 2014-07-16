@@ -38,20 +38,17 @@ function well_data_schema() {
         'not null' => TRUE,
       ),
       'level' => array(
-        'type' => 'numeric',
-        'precision' => 6,
-        'scale' => 2,
+        'type' => 'float',
         'not null' => TRUE,
       ),
       'units' => array(
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
+        'default' => 'unknown',
       ),
       'calibration' => array(
-        'type' => 'numeric',
-        'precision' => 4,
-        'scale' => 2,
+        'type' => 'float',
         'not null' => TRUE,
         'default' => 0,
       ),
