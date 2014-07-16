@@ -22,7 +22,7 @@ function well_data_entity_info() {
       'id' => 'did',
     ),
     'bundles' => array(
-      'well' => array(
+      'well_data' => array(
         'label' => 'well_data',
         'admin' => array(
           'path' => 'admin/structure/well_data/manage',
