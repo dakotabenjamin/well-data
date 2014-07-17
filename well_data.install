@@ -40,7 +40,10 @@ function well_data_schema() {
       'datetime' => array(
         'description' => 'Datetime',
         'type' => 'datetime',
-        'mysql_type' => 'datetime',
+        'mysql_type' => 'DATETIME',
+        'pgsql_type' => 'timestamp without timezone',
+        'sqlite_type' => 'VARCHAR',
+        'sqlserv_type' => 'smalldatetime',
         'not null' => FALSE,
         'sortable' => TRUE,
         'views' => TRUE,
