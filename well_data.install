@@ -29,7 +29,7 @@ function well_data_schema() {
         'description' => 'Date',
         'type' => 'varchar',
         'length' => 255,
-        'not null' => TRUE,
+        'not null' => FALSE,
       ),
       'time' => array(
         'description' => 'Time',
@@ -39,10 +39,8 @@ function well_data_schema() {
       ),
       'datetime' => array(
         'description' => 'Datetime',
-        'mysql_type' => 'DATETIME',
-        'pgsql_type' => 'timestamp without time zone',
-        'sqlite_type' => 'VARCHAR',
-        'sqlsrv_type' => 'smalldatetime',
+        'type' => 'datetime',
+	'mysql_type' => 'datetime',
         'not null' => FALSE,
         'sortable' => TRUE,
         'views' => TRUE,
