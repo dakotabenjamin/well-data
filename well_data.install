@@ -40,7 +40,7 @@ function well_data_schema() {
       'datetime' => array(
         'description' => 'Datetime',
         'type' => 'datetime',
-	'mysql_type' => 'datetime',
+        'mysql_type' => 'datetime',
         'not null' => FALSE,
         'sortable' => TRUE,
         'views' => TRUE,
