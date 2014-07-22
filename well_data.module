@@ -17,7 +17,7 @@ function well_data_entity_info() {
     'controller class' => 'WellDataController',
     'views controller class' => 'WellDataViewsController',
     'base table' => 'well_data',
-    'fieldable' => FALSE,
+    'fieldable' => TRUE,
     'entity keys' => array(
       'id' => 'did',
     ),
