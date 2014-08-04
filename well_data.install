@@ -14,16 +14,16 @@ function well_data_schema() {
     'fields' => array( 
       'did' => array(
         'description' => 'Primary key for our table of well data',
-        'type' => 'serial',
-        'unsigned' => TRUE,
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
-      ), /** This will now be fieldable
-      'well' => array(
+      ),
+      'serial' => array(
         'description' => 'id of the data\'s well',
-        'type' => 'int',
-        'unsigned' => TRUE,
+        'type' => 'varchar',
+        'length' => 255,
         'not null' => TRUE,
-        'default' => 0,
+        'default' => 'Null',
       ),
       'date' => array(
         'description' => 'Date',
@@ -39,13 +39,13 @@ function well_data_schema() {
       ),
       'datetime' => array(
         'description' => 'Datetime',
-        'type' => 'varchar',
-        'length' => '255',
-/**        'type' => 'date',
-        'mysql_type' => 'DATETIME',
-        'pgsql_type' => 'timestamp without timezone',
-        'sqlite_type' => 'VARCHAR',
-        'sqlserv_type' => 'smalldatetime', 
+        'type' => 'int',
+        'size' => 'big',
+//        'type' => 'date',
+//        'mysql_type' => 'DATETIME',
+//        'pgsql_type' => 'timestamp without timezone',
+//        'sqlite_type' => 'VARCHAR',
+//        'sqlserv_type' => 'smalldatetime', 
         'not null' => FALSE,
         'sortable' => TRUE,
         'views' => TRUE,
@@ -65,7 +65,7 @@ function well_data_schema() {
         'not null' => TRUE,
         'default' => 0,
       ),
-    **/),
+    ),
     'primary key' => array('did'),
   );
   return $schema;
