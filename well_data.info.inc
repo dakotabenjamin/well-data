@@ -87,7 +87,7 @@ function well_data_entity_property_info_alter(&$info) {
   // Add related profiles to the well datum object.
   $properties = &$info['well_data']['properties'];
   $properties['did'] = array(
-    'label' => t('Well Daum id'),
+    'label' => t('Well Datum id'),
     'type' => 'text',
     'description' => 'Node ID of this cluster',
     'schema field' => 'did',
